@@ -57,7 +57,7 @@ jobs:
         if: matrix.targetPlatform == 'StandaloneOSX'
         run: |
           pushd build/${{ matrix.targetPlatform }}
-          sudo zip -r ${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip ./${{ env.PROJECT_NAME }}.app
+          sudo zip -r ${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip . -i ./${{ env.PROJECT_NAME }}.app
           popd
           sudo mv build/${{ matrix.targetPlatform }}/${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip build/${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip
           
@@ -65,7 +65,7 @@ jobs:
         if: matrix.targetPlatform != 'StandaloneOSX'
         run: |
           pushd build/${{ matrix.targetPlatform }}
-          sudo zip -r ${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip ./*
+          sudo zip -r ${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip . -i ./*
           popd
           sudo mv build/${{ matrix.targetPlatform }}/${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip build/${{ env.PROJECT_NAME }}-${{ matrix.targetPlatform }}.zip
 
